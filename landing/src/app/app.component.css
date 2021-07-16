@@ -1,0 +1,114 @@
+.container{
+  display: flex;
+  height: 100%;
+}
+.sidebar{
+  width: 20%;
+}
+.content{
+  width: 80%;
+  background-color: #F5F7F8;
+}
+.brand{
+  height: 5%;
+  text-align: center;
+  background-color: #31363B;
+  padding-top: 10px;
+}
+.sidebar-body{
+  height: 95%;
+  display:flex ;
+
+}
+.sidebar-tabs{
+  width: 20%;
+  background-color: #2A2F33;
+
+}
+.sidebar-menu{
+  width: 80%;
+  background-color: #393D42;
+
+}
+.brand-name{
+  color:black;
+  font-weight: bolder;
+  font-size: x-large;
+
+
+}
+.io{
+  font-weight: lighter;
+}
+.expansion-panel{
+  background-color: #393D42;
+
+}
+
+.mat-expansion-panel-contents{
+  position: relative;
+  margin-left: 12px;
+}
+.mat-expansion-panel-contents:before{
+  position: absolute;
+  content: '';
+  border-left: 8px solid transparent;
+  border-right:8px solid transparent;
+  border-top:8px solid #393D42 ;
+  border-bottom: 8px solid transparent;
+}
+li:hover{
+  color:#f55661;
+}
+.panel-titles{
+  color:white;
+
+}
+.iconContainer{
+  padding-left: 15px;
+  padding-right: 5px;
+}
+fa-icon{
+  color:#f55661;
+}
+.description{
+  position: absolute;
+  margin-left: 180px;
+}
+.expansion-panel-header{
+  position: relative;
+}
+
+.expansion-panel:hover .expansion-panel-header {
+  background-color: #f55661;
+}
+.expansion-panel:hover fa-icon {
+  color: white;
+}
+.expansion-panel:hover .mat-expansion-panel-contents:before {
+  position: absolute;
+  content: '';
+  border-left: 8px solid transparent;
+  border-right:8px solid transparent;
+  border-top:8px solid #f55661 ;
+  border-bottom: 8px solid transparent;
+}
+.notifications{
+  background-color: #393D42;
+  color:white;
+  padding-left: 38px;
+  position: relative;
+}
+.badge{
+  position: absolute;
+  margin-left: 40px;
+  border-color: green;
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 1px;
+  width: 25px;
+  padding-left: 10px;
+}
+
+
+

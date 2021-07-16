@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="sidebar">
+    <div class="brand">
+      <span class="brand-name">sociality<span class="io">.io</span></span>
+    </div>
+    <div class="sidebar-body">
+      <div class="sidebar-tabs">
+
+      </div>
+      <div class="sidebar-menu">
+        <mat-card class="notifications"><span><fa-icon [icon]="faBell"></fa-icon></span>
+          NOTIFICATIONS
+          <span class="badge">29</span>
+        </mat-card>
+        <mat-accordion>
+          <span *ngFor="let item of contents">
+          <mat-expansion-panel class="expansion-panel" (opened)="item.openState = true"
+          (closed)="item.openState = false" hideToggle>
+            <mat-expansion-panel-header class="expansion-panel-header">
+              <mat-panel-title class="panel-titles">
+                <span  class="iconContainer"><fa-icon [icon]="item.icon"></fa-icon></span>
+                {{item.name}}
+              </mat-panel-title>
+              <mat-panel-description class="description">
+                <mat-icon>{{item.openState ? 'remove' : 'add'}}</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <span class="mat-expansion-panel-contents">
+            <li class="panel-titles">Compose</li>
+            <br>
+            <li class="panel-titles">Feed</li>
+          </span>
+          </mat-expansion-panel>
+        </span>
+        </mat-accordion>
+      </div>
+
+    </div>
+  </div>
+  <div class="content">
+    <mat-tab-group>
+      <mat-tab label="First">Content 1</mat-tab>
+      <mat-tab label="Second">jhgkhContent 2</mat-tab>
+      <mat-tab label="Third">>Content 3</mat-tab>
+
+    </mat-tab-group>
+
+
+
+  </div>
+</div>
