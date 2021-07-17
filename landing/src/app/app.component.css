@@ -17,7 +17,7 @@
 }
 .sidebar-body{
   height: 95%;
-  display:flex ;
+  display:flex;
 
 }
 .sidebar-tabs{
@@ -34,8 +34,6 @@
   color:black;
   font-weight: bolder;
   font-size: x-large;
-
-
 }
 .io{
   font-weight: lighter;
@@ -68,6 +66,9 @@ li:hover{
   padding-left: 15px;
   padding-right: 5px;
 }
+.bellIcon{
+  margin-right: 5px;;
+}
 fa-icon{
   color:#f55661;
 }
@@ -93,22 +94,50 @@ fa-icon{
   border-top:8px solid #f55661 ;
   border-bottom: 8px solid transparent;
 }
-.notifications{
-  background-color: #393D42;
-  color:white;
-  padding-left: 38px;
-  position: relative;
-}
 .badge{
-  position: absolute;
-  margin-left: 40px;
-  border-color: green;
+  border-color: #46605f  ;
   border-style: solid;
   border-radius: 5px;
   border-width: 1px;
-  width: 25px;
-  padding-left: 10px;
+  width: 20px;
+  color:white;
+  padding-left: 5px;
 }
+img{
+  height: 40px;
+  width: 40px;
+  border-radius: 10px;
+  opacity: 0.2;
+}
+.tab{
+  width: 40px;
+  height: 40px;
+  padding-left: 10px;
+  padding-right: 15px;
+  position: relative;
+  padding-top: 10px;
+}
+.tab:hover img{
+opacity: 1;
+}
+
+.tab:hover .tab-pointer:before{
+  position: absolute;
+  right: 60px;
+  content:'';
+  border-width: 5px;
+  border-style: solid;
+  border-color: #f55661;
+  border-radius: 10px;
+  height: 40px;
+  width: 40px;
+  border-left: transparent;
+  border-top: transparent;
+  border-bottom: transparent;
+}
+
+
+
 
 
 

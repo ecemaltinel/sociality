@@ -5,13 +5,25 @@
     </div>
     <div class="sidebar-body">
       <div class="sidebar-tabs">
-
+        <span *ngFor="let item of brands">
+          <div class="tab">
+            <span  class="tab-pointer"></span>
+           <a href=""><img src={{item.img}} alt={{item.name}}></a>
+          </div>
+        </span>
       </div>
       <div class="sidebar-menu">
-        <mat-card class="notifications"><span><fa-icon [icon]="faBell"></fa-icon></span>
-          NOTIFICATIONS
-          <span class="badge">29</span>
-        </mat-card>
+        <mat-expansion-panel class="expansion-panel" hideToggle disabled>
+            <mat-expansion-panel-header class="expansion-panel-header">
+              <mat-panel-title>
+                <span class="iconContainer"><fa-icon [icon]="faBell"></fa-icon></span>
+               <span class="panel-titles">NOTIFICATIONS</span>
+              </mat-panel-title>
+              <mat-panel-description class="description">
+                <span class="badge">29</span>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+          </mat-expansion-panel>
         <mat-accordion>
           <span *ngFor="let item of contents">
           <mat-expansion-panel class="expansion-panel" (opened)="item.openState = true"
@@ -38,14 +50,6 @@
     </div>
   </div>
   <div class="content">
-    <mat-tab-group>
-      <mat-tab label="First">Content 1</mat-tab>
-      <mat-tab label="Second">jhgkhContent 2</mat-tab>
-      <mat-tab label="Third">>Content 3</mat-tab>
-
-    </mat-tab-group>
-
-
 
   </div>
 </div>
