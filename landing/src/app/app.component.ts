@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { faBell,faFileAlt,faEdit,faComment,faHeadphonesAlt,faBookOpen } from '@fortawesome/free-solid-svg-icons';
+import { faBell,faFileAlt,faEdit,faComment,faHeadphonesAlt,faBookOpen,
+  faCheck,faBan,faTrashAlt,faEllipsisH,
+  faThumbsUp,faHeart,faRetweet,faCommentAlt,faShareAlt,faEye
+} from '@fortawesome/free-solid-svg-icons';
+import * as data from '../assets/data.json';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +18,20 @@ export class AppComponent {
   faComment=faComment
   faHeadphonesAlt=faHeadphonesAlt
   faBookOpen = faBookOpen
+  faCheck = faCheck
+  faBan = faBan
+  faTrashAlt = faTrashAlt
+  faEllipsisH = faEllipsisH
+  faThumbsUp = faThumbsUp
+  faHeart = faHeart
+  faRetweet = faRetweet
+  faCommentAlt = faCommentAlt
+  faShareAlt = faShareAlt
+  faEye = faEye
+
+
+
+
   panelOpenState=false;
 
   contents=[
@@ -33,6 +51,68 @@ export class AppComponent {
     {img:"https://tribalistanbul.com/newsletter/2020/assets/media/header-logo.png",name:"Tribal"}
 
   ]
+
+  colorCodes=[
+    {name:"Published",color:"#acacac"},
+    {name:"Scheduled",color:"#3ac183"},
+    {name:"Need Approval",color:"#f7bf38"},
+    {name:"Error",color:"#fb6450"},
+    {name:"Notes",color:"#6ab2f2"}
+
+  ]
+
+  post = data.posts_by_date
+
+
+getMyStyles(status: number){
+  var color="#6ab2f2"
+
+  if(status==0)
+  color= "#f7bf38"
+  else if(status==1)
+  color= "#3ac183"
+  else if(status==3)
+  color= "#acacac"
+  else if(status==4)
+  color= "#fb6450"
+  else
+  color="#6ab2f2"
+
+
+  let myStyles = {
+    "background-color":color
+ };
+ return myStyles;
+}
+
+getColorCodes(color: string){
+
+  let myStyle = {
+  "width": "5px",
+  "height": "5px",
+  "border-style": "solid",
+  "border-radius": "5px",
+  "border-color": color,
+  "background-color": color,
+  "margin-right":"5px",
+  "margin-left": "20px"
+ };
+ return myStyle;
+}
+
+
+convertDate(str:string,header:boolean){
+ var date:Date= new Date(str)
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+if(header)
+var latest = date.getDate() + " " + monthNames[date.getMonth()] + " " + date.getFullYear()
+else
+var latest = date.getDate() + " " + monthNames[date.getMonth()] + " "
++ date.getFullYear() + " - " + date.getHours()+":"+date.getMinutes()
+  return latest
+}
 
 
 }
