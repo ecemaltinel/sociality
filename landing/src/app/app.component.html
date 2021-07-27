@@ -5,25 +5,31 @@
     </div>
     <div class="sidebar-body">
       <div class="sidebar-tabs">
-        <span *ngFor="let item of brands">
+        <div *ngFor="let item of brands">
           <div class="tab">
             <span class="tab-pointer"></span>
-            <a href=""><img src="{{ item.img }}" alt="{{ item.name }}" class="logos" /></a>
+            <a href=""
+              ><img src="{{ item.img }}" alt="{{ item.name }}" class="logos"
+            /></a>
           </div>
-        </span>
+        </div>
       </div>
       <div class="sidebar-menu">
         <mat-expansion-panel class="expansion-panel" hideToggle disabled>
           <mat-expansion-panel-header class="expansion-panel-header">
-            <mat-panel-title>
-              <span class="iconContainer"
-                ><fa-icon [icon]="faBell"></fa-icon
-              ></span>
-              <span class="panel-titles">NOTIFICATIONS</span>
-            </mat-panel-title>
-            <mat-panel-description class="description">
-              <span class="badge">29</span>
-            </mat-panel-description>
+            <div class="expansion-panel-header-div">
+              <div>
+                <mat-panel-title>
+                  <span class="iconContainer"
+                    ><fa-icon [icon]="faBell"></fa-icon
+                  ></span>
+                  <span class="panel-titles">NOTIFICATIONS</span>
+                </mat-panel-title>
+              </div>
+              <div>
+                <span class="badge">29</span>
+              </div>
+            </div>
           </mat-expansion-panel-header>
         </mat-expansion-panel>
         <mat-accordion>
@@ -35,15 +41,19 @@
               hideToggle
             >
               <mat-expansion-panel-header class="expansion-panel-header">
-                <mat-panel-title class="panel-titles">
-                  <span class="iconContainer"
-                    ><fa-icon [icon]="item.icon"></fa-icon
-                  ></span>
-                  {{ item.name }}
-                </mat-panel-title>
-                <mat-panel-description class="description">
-                  <mat-icon>{{ item.openState ? "remove" : "add" }}</mat-icon>
-                </mat-panel-description>
+                <div class="expansion-panel-header-div">
+                  <div>
+                    <mat-panel-title class="panel-titles">
+                      <span class="iconContainer"
+                        ><fa-icon [icon]="item.icon"></fa-icon
+                      ></span>
+                      {{ item.name }}
+                    </mat-panel-title>
+                  </div>
+                  <div>
+                    <mat-icon>{{ item.openState ? "remove" : "add" }}</mat-icon>
+                  </div>
+                </div>
               </mat-expansion-panel-header>
               <span class="mat-expansion-panel-contents">
                 <li class="panel-titles">Compose</li>
@@ -56,60 +66,101 @@
       </div>
     </div>
   </div>
-  <div class="content">
-    <div class="colorCodes">
-      <span *ngFor="let item of colorCodes" class="colorCodes">
-      <div [ngStyle]="getColorCodes(item.color)"></div><div style="color:#8a8b8c">{{item.name}}</div>
+  <div class="contents">
+    <span class="contents-upper">
+      <div class="colorCodes">
+        <span *ngFor="let item of colorCodes" class="colorCodes">
+          <div [ngStyle]="getColorCodes(item.color)"></div>
+          <div style="color: #8a8b8c">{{ item.name }}</div>
+        </span>
+      </div>
+      <img class="me" src="../assets/me.jpg" alt="ME" />
     </span>
-    </div>
     <span class="posts" *ngFor="let item of post | keyvalue">
-      <h3 class="key">{{ convertDate(item.key,true) }}</h3>
+      <h3 class="key">{{ convertDate(item.key, true) }}</h3>
       <div class="break"></div>
       <div *ngFor="let item of item.value">
         <div class="post">
           <div class="channel-icon" [ngStyle]="getMyStyles(item.status)">
-            <span *ngIf="item.account.channel=='facebook'"><i class="fab fa-facebook-f fa-lg"></i></span>
-            <span *ngIf="item.account.channel=='twitter'"><i class="fab fa-twitter fa-lg"></i></span>
-            <span *ngIf="item.account.channel=='instagrambusiness'"><i class="fab fa-instagram fa-lg"></i></span>
-
+            <span *ngIf="item.account.channel == 'facebook'"
+              ><i class="fab fa-facebook-f fa-lg"></i
+            ></span>
+            <span *ngIf="item.account.channel == 'twitter'"
+              ><i class="fab fa-twitter fa-lg"></i
+            ></span>
+            <span *ngIf="item.account.channel == 'instagrambusiness'"
+              ><i class="fab fa-instagram fa-lg"></i
+            ></span>
           </div>
           <div class="channel-content">
-            <div class="upp">
-            <div class="content-date">
-              {{ convertDate(item.created_at,false) }}
+            <div class="content-header">
+              <div class="content-date">
+                {{ convertDate(item.created_at, false) }}
+              </div>
+              <div class="content-upper-icons">
+                <div *ngIf="item.status == 0">
+                  <fa-icon [icon]="faCheck" class="upper-icon"></fa-icon>
+                </div>
+                <div *ngIf="item.status == 1">
+                  <fa-icon [icon]="faBan" class="upper-icon"></fa-icon>
+                </div>
+                <div>
+                  <fa-icon [icon]="faTrashAlt" class="upper-icon"></fa-icon>
+                </div>
+                <div>
+                  <fa-icon [icon]="faEllipsisH" class="upper-icon"></fa-icon>
+                </div>
+              </div>
             </div>
-            <div class="content-upper-icons">
-              <div *ngIf="item.status == 0">
-                <fa-icon [icon]="faCheck" class="upper-icon"></fa-icon>
-              </div>
-              <div *ngIf="item.status == 1">
-                <fa-icon [icon]="faBan" class="upper-icon"></fa-icon>
-              </div>
-              <div>
-                <fa-icon [icon]="faTrashAlt" class="upper-icon"></fa-icon>
-              </div>
-              <div>
-                <fa-icon [icon]="faEllipsisH" class="upper-icon"></fa-icon>
-              </div>
-            </div>
-          </div>
             <div class="inner-content">
               <div class="message">
-                <p>{{item.entry.message}}</p>
+                <p>{{ item.entry.message }}</p>
               </div>
-              <div class="image">
-              <img src="{{item.entry.image[0]}}" onerror="this.src='../assets/no-post-image.png';"
-              class="image2">
+              <div>
+                <img
+                  src="{{ item.entry.image[0] }}"
+                  onerror="this.src='../assets/no-post-image.png';"
+                  class="content-image"
+                />
               </div>
             </div>
-            <div class="etkilesim">
-<div *ngIf="item.account.channel!='twitter'"><fa-icon [icon]="faThumbsUp" class="etkilesim-icon"></fa-icon></div>
-<div *ngIf="item.account.channel=='twitter'"><fa-icon [icon]="faHeart" class="etkilesim-icon"></fa-icon></div>
-<div *ngIf="item.account.channel=='twitter'"><fa-icon [icon]="faRetweet" class="etkilesim-icon"></fa-icon></div>
-<div><fa-icon [icon]="faCommentAlt" class="etkilesim-icon"></fa-icon></div>
-<div *ngIf="item.account.channel!='twitter'"><fa-icon [icon]="faShareAlt" class="etkilesim-icon"></fa-icon></div>
-<div><fa-icon [icon]="faEye" class="etkilesim-icon"></fa-icon ></div>
-
+            <div class="content-interaction">
+              <div *ngIf="item.account.channel != 'twitter'">
+                <fa-icon
+                  [icon]="faThumbsUp"
+                  class="content-interaction-icon"
+                ></fa-icon>
+              </div>
+              <div *ngIf="item.account.channel == 'twitter'">
+                <fa-icon
+                  [icon]="faHeart"
+                  class="content-interaction-icon"
+                ></fa-icon>
+              </div>
+              <div *ngIf="item.account.channel == 'twitter'">
+                <fa-icon
+                  [icon]="faRetweet"
+                  class="content-interaction-icon"
+                ></fa-icon>
+              </div>
+              <div>
+                <fa-icon
+                  [icon]="faCommentAlt"
+                  class="content-interaction-icon"
+                ></fa-icon>
+              </div>
+              <div *ngIf="item.account.channel != 'twitter'">
+                <fa-icon
+                  [icon]="faShareAlt"
+                  class="content-interaction-icon"
+                ></fa-icon>
+              </div>
+              <div>
+                <fa-icon
+                  [icon]="faEye"
+                  class="content-interaction-icon"
+                ></fa-icon>
+              </div>
             </div>
           </div>
         </div>
