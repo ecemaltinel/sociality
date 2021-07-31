@@ -7,10 +7,10 @@
       <div class="sidebar-tabs">
         <div *ngFor="let item of brands">
           <div class="tab">
-            <span class="tab-pointer"></span>
-            <a href=""
-              ><img src="{{ item.img }}" alt="{{ item.name }}" class="logos"
-            /></a>
+            <span class="tab-pointer" id="{{ item.name }}"></span>
+            <button class="button" (click)="brandSelected(item.name)">
+              <img src="{{ item.img }}" alt="{{ item.name }}" class="logos" id="{{item.name}}+img" />
+            </button>
           </div>
         </div>
       </div>
@@ -76,10 +76,10 @@
       </div>
       <img class="me" src="../assets/me.jpg" alt="ME" />
     </span>
-    <span class="posts" *ngFor="let item of post | keyvalue">
+    <span class="posts" *ngFor="let item of post | keyvalue ; let i = index">
       <h3 class="key">{{ convertDate(item.key, true) }}</h3>
       <div class="break"></div>
-      <div *ngFor="let item of item.value">
+      <div *ngFor="let item of item.value ; let j = index">
         <div class="post">
           <div class="channel-icon" [ngStyle]="getMyStyles(item.status)">
             <span *ngIf="item.account.channel == 'facebook'"
@@ -114,7 +114,8 @@
             </div>
             <div class="inner-content">
               <div class="message">
-                <p>{{ item.entry.message }}</p>
+                <p id="{{ 'id' + i + j }}">{{ httpCheck(item.entry.message) ? httpEdit(item.entry.message,'id'+i+j) : item.entry.message}}
+                </p>
               </div>
               <div>
                 <img
